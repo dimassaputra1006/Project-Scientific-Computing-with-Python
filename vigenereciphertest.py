@@ -32,8 +32,9 @@ def decrypt(message, key):
 # Fungsi utama program
 def main():
     print("=== Program Vigenère Cipher ===")
-    message = input("Masukkan teks: ")
+    text = input("Masukkan teks: ")
     key = input("Masukkan kunci enkripsi (key): ")
+    encrypted_text = ''
 
     while True:
         print("\nPilih aksi:")
@@ -45,18 +46,22 @@ def main():
         choice = input("Masukkan pilihan (1/2/3/4): ").strip()
 
         if choice == '1':
-            result = encrypt(message, key)
-            print("Hasil Enkripsi:", result)
+            encrypted_text = encrypt(text, key)
+            print("Hasil Enkripsi:", encrypted_text)
         elif choice == '2':
-            result = decrypt(message, key)
-            print("Hasil Dekripsi:", result)
+            if encrypted_text == '':
+                print("Belum ada hasil enkripsi untuk didekripsi.")
+            else:
+                decrypted_text = decrypt(encrypted_text, key)
+                print("Hasil Dekripsi:", decrypted_text)
         elif choice == '3':
-            message = input("Masukkan teks: ")
-            key = input("Masukkan kunci enkripsi (key): ")
+            text = input("Masukkan teks baru: ")
+            key = input("Masukkan kunci baru: ")
+            encrypted_text = ''
         elif choice == '4':
-            print("Program selesai. Terima kasih!")
+            print("Terima kasih! Program selesai.")
             break
         else:
-            print("Pilihan tidak valid. Ulangi.")
+            print("Pilihan tidak valid. Silakan coba lagi.")
 
 main()
