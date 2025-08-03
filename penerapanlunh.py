@@ -39,3 +39,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+#note kartu valid jika hasil itu sama dengan 0
