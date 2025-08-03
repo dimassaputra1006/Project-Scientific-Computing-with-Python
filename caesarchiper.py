@@ -1,18 +1,18 @@
-text = 'Hello Zaira'
+text = 'mrttaqrhknsw ih puggrur'
 custom_key = 'python'
 
-def vigenere(message, key, direction):
+def vigenere(message, key, direction=1):
     key_index = 0
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     final_message = ''
 
     for char in message.lower():
-    
-        # Append space to the message
-        if char == ' ':
+
+        # Append any non-letter character to the message
+        if not char.isalpha():
             final_message += char
         else:        
-            # Find the right key character to encode/decode 
+            # Find the right key character to encode/decode
             key_char = key[key_index % len(key)]
             key_index += 1
 
@@ -23,8 +23,14 @@ def vigenere(message, key, direction):
             final_message += alphabet[new_index]
     
     return final_message
+
+def encrypt(message, key):
+    return vigenere(message, key)
     
-encryption = vigenere(text, custom_key, 1)
+def decrypt(message, key):
+    return vigenere(message, key, -1)
+    
+encryption = encrypt(text, custom_key)
 print(encryption)
-decryption = vigenere(encryption, custom_key, -1)
+decryption = decrypt(encryption, custom_key)
 print(decryption)
